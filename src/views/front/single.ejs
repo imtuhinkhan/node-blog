@@ -1,0 +1,109 @@
+<%- include('./partials/header.ejs') %>
+<!--Heading-->
+<div class="tz-heading">
+    <img src="/images/cat.jpg" alt="<%= singleBlock.title %>" style="width:1220px;height: 232px;margin: auto;">
+    <h1><%= singleBlock.title %></h1>
+</div>
+<!--End Heading-->
+
+<!--Control-->
+<div class="tz-control">
+    <div class="container">
+
+        <!--Breadcrumbs-->
+        <ul class="tz-breadcrumbs pull-left">
+            <li>
+                <a href="/">প্রচ্ছদ ক্যাটাগরি </a><i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <a href="/category/<%= singleBlock.cat[0].slug %>"><%= singleBlock.cat[0].title %></a><i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <%= singleBlock.title %>
+            </li>
+        </ul>
+        <!--End breadcrumbs-->
+
+    </div>
+</div>
+<!--End control-->
+
+<!--Blog wrap-->
+<div class="blog-post-sidebar">
+
+    <!--Blog post-->
+    <div class="blog-post">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-md-9 border-right">
+                    <article class="single-post">
+                        <div class="tz-single-thumbnail">
+                            <img src="/<%= singleBlock.image %>" alt="<%= singleBlock.title %>" style="width:869px;height: 540px;margin: auto;">
+                        </div>
+                        <h1 class="single-title"><%= singleBlock.title %></h1>
+                        <span class="post-meta"> Published: <%= moment(singleBlock.createdAt).format('Do MMMM, YYYY') %> | <i class="fa fa-eye"></i> <%= singleBlock.viewCount %></span>
+                       
+                        <div class="post-content">
+                            <%- singleBlock.description %>
+                        </div>
+                        <div style="text-align: center;margin:5px 0px;">
+                            <img src="/images/data/header-replace.png" alt="ads">
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md-3 blog-sidebar">
+                    <div class="widget widget_categories">
+                        <a href="#"><img src="/images/data/image-demo/336x280.png" alt="ads3"></a>
+                        
+                    </div>
+                    <div class="widget">
+                        <div class="tz-title-filter">
+                            <h3 class="tz-title">
+                                <span>সাম্প্রতিক খবর</span>
+                            </h3>
+                        </div>
+                        <div class="widget-ca-box">
+                            <ul class="widget-post-box">
+                                <% Object.keys(slideBlock).forEach(function(prop) { %>
+                                <li>
+                                    <div class="widget_thumbnail">
+                                        <a href="#">
+                                            <img src="/<%= slideBlock[prop].image %>" alt="<%= slideBlock[prop].title %>" style="height: 57px;
+                                            width: 100%;">
+                                        </a>
+                                    </div>
+                                    <div class="widget_item_info">
+                                        <h4><a href="/news/details/<%= slideBlock[prop].slug %>"><%= slideBlock[prop].title %></a></h4>
+                                        <span class="meta"><%= moment(slideBlock[prop].createdAt).format('Do MMMM, YYYY') %> </span>
+                                    </div>
+                                </li>
+                                <% }) %>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="widget widget_categories">
+                        <a href="#"><img src="/images/data/image-demo/336x280.png" alt="ads3"></a>
+                        
+                    </div>
+                </div>
+            </div><!--End row-->
+            <div class="row">
+                <div class="col-sm-12">                    
+                    <div class="sing-post-footer" style="margin: 0!important;">
+                        <div class="tz-share pull-right">
+                            Share:
+                            <a  href="https://www.facebook.com/sharer/sharer.php?u=<%= fullUrl %>>" target="_blank" class="fa fa-facebook-square"></a>
+                            <a href="#" class="fa fa-twitter"></a>
+                            <a href="#" class="fa fa-google"></a>
+                            <a href="#" class="fa fa-dribbble"></a>
+                            <a href="#" class="fa fa-behance"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--End container-->
+    </div>
+
+</div>
+<%- include('./partials/footer.ejs') %>

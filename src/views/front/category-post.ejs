@@ -1,0 +1,107 @@
+<%- include('./partials/header.ejs') %>
+<!--Heading-->
+<div class="tz-heading">
+    <img src="/images/cat.jpg" alt="blog page">
+    <h1><%= catDetails.title %></h1>
+</div>
+<!--End Heading-->
+
+<!--Control-->
+<div class="tz-control">
+    <div class="container">
+
+        <!--Breadcrumbs-->
+        <ul class="tz-breadcrumbs pull-left">
+            <li>
+                <a href="/">প্রচ্ছদ </a><i class="fa fa-angle-right"></i>
+            </li>            
+            <li>
+                <a href="#">ক্যাটাগরি </a><i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <a href="/category/<%= catDetails.title %>"><%= catDetails.title %></a><i class="fa fa-angle-right"></i>
+            </li>
+        </ul>
+        <!--End breadcrumbs-->
+
+    </div>
+</div>
+<!--End control-->
+
+<!--Blog wrap-->
+<div class="blog-post-wrap">
+
+    <!--Blog post-->
+    <div class="blog-post">
+        <div class="container">
+            <div class="row">
+                <% Object.keys(categoryWise).forEach(function(prop) { %>
+                   
+                <div class="col-md-3 col-sm-6">
+
+                    <!--Item blog post-->
+                    <div class="item-blog-post">
+                        <div class="tz-post-thumbnail">
+                            <img src="/<%= categoryWise[prop].image %>" alt="<%= categoryWise[prop].title %>" style="width: 530px;height: 184px;">
+                        </div>
+                        <div class="tz-post-info">
+                            <h3><a href="/news/details/<%= categoryWise[prop].slug %>"><%= categoryWise[prop].title %></a></h3>
+                            <span class="meta"><%= moment(categoryWise[prop].createdAt).format('Do MMMM, YYYY') %></span>
+                            <p><%= categoryWise[prop].metaDescription.substring(0, 100) %>...</p>
+                        </div>
+                    </div>
+                    <!--End Item blog post-->
+
+                </div>
+                <!-- <%if(prop==8){%>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="item-blog-post">
+                            <img src="/images/data/image-demo/370x593.png" alt="The 20 free things in Sydney with my girlfriend" style="width: 530px;height: 184px;">
+                            
+                        </div>    
+                    </div>
+                <% } %> -->
+                <% }); %>
+                
+                <div style="text-align: center;margin:5px 0px;">
+                    <img src="/images/data/header-replace.png" alt="ads">
+                </div>
+            </div><!--End row-->
+        </div><!--End container-->
+    </div>
+    <!--End blog post-->
+
+    <!--Pagination-->
+    <% if (pages > 0) { %>
+    <nav class="tz-pagination">
+        <ul class="pagination_list">
+            <li>
+                <a class="prev" href="/category/<%= catDetails.slug %>?page=1"><i class="fa fa-angle-left"></i></a>
+            </li>   
+           <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+                    <% if (i !== 1) { %>
+                        <li class="current"><a>...</a></li>
+                    <% } %>
+                    <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+                        <% if (i == current) { %>
+                            <li><a class="current"><%= i %></a></li>
+                        <% } else { %>
+                            <li><a href="/category/<%= catDetails.slug %>?page=<%= i %>"><%= i %></a></li>
+                        <% } %>
+                        <% if (i == Number(current) + 4 && i < pages) { %>
+                            <li class="disabled"><a>...</a></li>
+                        <% } %>
+                    <% } %>                   
+                    <li>
+                        <a class="next" href="/category/<%= catDetails.slug %>?page=<%= pages %>"><i class="fa fa-angle-right"></i></a>
+                    </li>
+                    
+        </ul>
+    </nav>
+
+    <% } %>
+    <!--End pagination-->
+
+</div>
+<!--End blog wrap-->
+<%- include('./partials/footer.ejs') %>

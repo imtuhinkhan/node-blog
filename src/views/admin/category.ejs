@@ -1,0 +1,124 @@
+<%- include('./partials/header.ejs') %>
+<%- include('./partials/menu.ejs') %>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>News Category</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Category</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Add/Edit Category</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form method="POST" action="/admin/category">
+                <div class="card-body">
+                    <%if (error) { %>
+                        <p style="color:red"><%= error.message %></p>
+                    <% } %>
+                    <%if (oldCategory) { %> 
+                        <input type="hidden" name="cid" value="<%=  oldCategory._id %>">
+                    <% } %>    
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Category Name</label>
+                    <input type="text" name="title" class="form-control" id="title" placeholder="Category Name" <%if (oldCategory) { %>  value="<%=  oldCategory.title %>" <% } %> > 
+                  </div>
+                  <%if (hasCategory) { %>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Parent Category (If any)</label>
+                    <select class="form-control" name="parent">
+                        <option value='' disabled selected>Select Parent Category</option>
+                        <% for(let p_cats of category){ %>
+                        <option value="<%= p_cats._id %>" <%if (oldCategory && locals.oldCategory.parent && oldCategory.parent.equals(p_cats._id) ) { %> selected <% } %> ><%= p_cats.title %></option>                        
+                         <% } %>
+                      </select>
+                  </div>
+                  <% } %>
+                  <div class="form-group">
+                    <label for="exampleInputFile">File input</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" class="" id="exampleInputFile" name="image">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- /.card-body -->
+                
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
+            </div>
+
+          </div>
+          <!--/.col (left) -->
+          <!-- right column -->
+          <div class="col-md-12">
+            <!-- general form elements disabled -->
+            <div class="card card-warning">
+              <div class="card-header">
+                <h3 class="card-title">Category List</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Category Name</th>
+                    <th>Parent</th>
+                    <th>Image</th>
+                    <th>Action</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <% for(let cats of category){ %>
+                  <tr>
+                    <td>#</td>
+                    <td><%= cats.title %></td>
+                    <td><% if(cats.parentCat[0]){ %> <%= cats.parentCat[0].title %><% } %></td>
+                    
+                    <td></td>
+                    <td>
+                        <a href="/admin/category/edit/<%= cats._id %>" class="btn btn-xs btn-warning">Edit</a>
+                        <a href="/admin/category/delete/<%= cats._id %>" class="btn btn-xs btn-danger">Delete</a>
+
+                    </td>
+                  </tr>
+                  <% } %>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!--/.col (right) -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+<%- include('./partials/footer.ejs') %>

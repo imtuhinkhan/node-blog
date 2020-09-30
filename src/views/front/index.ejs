@@ -1,0 +1,464 @@
+<%- include('./partials/header.ejs') %>
+
+        <div class="featured-post-wrap">
+            <div class="container">
+                <ul class="featured-post">
+
+                    <li>
+                        <% if(slideBlock[0]){ %>
+                        <!--Item zero-->
+                        <div class="tz-grid-post-0">
+                            <div class="tz-featured-thumb">
+                                <a href="/news/details/<%= slideBlock[0].slug %>">
+                                    <img src="/<%= slideBlock[0].image %>" alt="/<%= slideBlock[0].image %>">
+                                </a>
+                            </div>
+                            <div class="tz-featured-info">
+                                <a class="glod cat_name" href="/category/<%= slideBlock[0].cat[0].slug %>"><%= slideBlock[0].cat[0].title %></a>
+                                <h3><a href="/news/details/<%= slideBlock[0].slug %>"> <%= slideBlock[0].title %> </a></h3>
+                                <span class="tz-featured-meta"> <%= moment(slideBlock[0].createdAt).format('Do MMMM, YYYY') %> </span>
+                            </div>
+                        </div>
+                        <!--End Item-->
+                        <% } %>
+                        <!--Item One-->
+                        <% Object.keys(slideBlock).forEach(function(prop) { if(prop!=0){ %>
+                        <div class="tz-grid-post-1">
+                            <div class="tz-featured-thumb">
+                                <a href="/news/details/<%= slideBlock[prop].slug %>">
+                                    <img src="/<%= slideBlock[prop].image %>" alt="<%= slideBlock[prop].title %>">
+                                </a>
+                            </div>
+                            <div class="tz-featured-info">
+                                <a class="red cat_name" href="/category/<%= slideBlock[prop].cat[0].slug %>"><%= slideBlock[prop].cat[0].title %></a>
+                                <h3><a href="/news/details/<%= slideBlock[prop].slug %>"><%= slideBlock[prop].title %></a></h3>
+                                <span class="tz-featured-meta"> <%= moment(slideBlock[prop].createdAt).format('Do MMMM, YYYY') %> </span>
+                            </div>
+                        </div>
+                        <!--End Item One-->
+                        <% } }); %>
+
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        
+        <div class="custom-container">
+
+            <!--Start row-->
+            <div class="row border-bottom2">
+
+                <!--Content left-->
+                <div class="col-md-8 col-sm-8 style-box1 tzcontent">
+
+                    <!--Wrap element-->
+                    <div class="tz-box-one">
+
+                        <!--Title-->
+                       <div class="tz-title-filter">
+                           <h3 class="tz-title">
+                               <span>সংবাদপত্রে বাজিতপুর</span>
+                           </h3>
+                       </div>
+                        <!--End title-->
+
+                        <!--Content-->
+                        <div class="row">
+                            <% if(onNewspaper[0]){ %>
+                            <div class="col-md-6">
+                                
+                                <!--Item large-->
+                                <div class="item-large">
+                                    <div class="tz-thumbnail">
+                                        <a href="/news/details/<%= onNewspaper[0].slug %>">
+                                            <img src="/<%= onNewspaper[0].image %>" alt="<%= onNewspaper[0].title %>">
+                                        </a>
+                                    </div>
+                                    <div class="tz-infomation">
+                                        <a class="glod cat_name" href="/category/<%= onNewspaper[0].cat[0].slug %>"><%= onNewspaper[0].cat[0].title %></a>
+                                        <h3 class="tz-post-title"><a href="/news/details/<%= onNewspaper[0].slug %>"><%= onNewspaper[0].title %></a></h3>
+                                        <span class="meta"> <%= moment(onNewspaper[0].createdAt).format('Do MMMM, YYYY') %> </span>
+                                        <p> <%= onNewspaper[0].metaDescription.substring(0, 300) %>...</p>
+                                    </div>
+                                </div>
+                                <!--End item large-->
+
+                            </div>
+                            <% } %>
+                            <div class="col-md-6">
+                                <% Object.keys(onNewspaper).forEach(function(prop) { if(prop!=0){ %>
+                                <!--Item small-->
+                                <div class="item-small">
+                                    <div class="tz-thumbnail">
+                                        <a href="/news/details/<%= onNewspaper[prop].slug %>">
+                                            <img src="/<%= onNewspaper[prop].image %>" alt="<%= onNewspaper[prop].title %>">
+                                        </a>
+                                    </div>
+                                    <div class="tz-infomation">
+                                        <h3 class="tz-post-title"><a href="/news/details/<%= onNewspaper[prop].slug %>"><%= onNewspaper[prop].title %></a></h3>
+                                        <span class="meta"> <%= moment(onNewspaper[prop].createdAt).format('Do MMMM, YYYY') %> </span>
+                                    </div>
+                                </div>
+                                <!--End item small-->
+                                <% } }); %>
+                            </div>
+                        </div>
+                        <!--End Content-->
+
+                    </div>
+                    <!--End Wrap element-->
+
+                    <!--Wrap element-->
+                    <div class="tz-box-one border-top2">
+
+                        <!--Title-->
+                        <div class="tz-title-filter">
+                            <h3 class="tz-title">
+                                <span>রাজনীতি</span>
+                            </h3>
+                        </div>
+                        <!--End title-->
+
+                        <!--Content-->
+                        <div class="row">
+
+                            <!--Box content two columns-->
+                           <div class="cat-box-two-columns">
+                            <% Object.keys(politics).forEach(function(prop) { %>
+                                <% if(prop==0 || prop==3) { %>
+                               <div class="col-md-6">
+
+                                   <!--Item thumbnail wrap-->
+                                   <div class="item-thumbnail-wrap">
+                                       <div class="tz-thumbnail">
+                                           <a href="/news/details/<%= politics[prop].slug %>">
+                                               <img src="<%= politics[prop].image %>" alt="<%= politics[prop].title %>" style="width: 370px; height: 243px;">
+                                           </a>
+                                           <div class="tz-infomation">
+                                               <h3 class="tz-post-title"><a href="/news/details/<%= politics[prop].slug %>"><%= politics[prop].title %></a></h3>
+                                               <span class="meta"> <%= moment(politics[prop].createdAt).format('Do MMMM, YYYY') %> </span>
+                                           </div>
+                                       </div>
+                                   </div>
+                                   <!--End Item thumbnail wrap-->
+                                   <% } else{ %>
+                                   <!--Item small-->
+                                   <div class="item-small">
+                                       <div class="tz-thumbnail">
+                                           <a href="/news/details/<%= politics[prop].slug %>">
+                                               <img src="<%= politics[prop].image %>" alt="<%= politics[prop].title %>" style="width:130px; height: 99px;" >
+                                           </a>
+                                       </div>
+                                       <div class="tz-infomation">
+                                           <h3 class="tz-post-title"><a href=""><%= politics[prop].title %></a></h3>
+                                           <span class="meta"> <%= moment(politics[prop].createdAt).format('Do MMMM, YYYY') %></span>
+                                       </div>
+                                   </div>
+                                   <% } %>
+                                   <!--End item small-->
+
+                                   <% if(prop==2 || prop==(politics.length-1)) { %></div> <% } %>
+                               <% }); %>
+                               
+                           </div>
+                            <!--End box content two columns-->
+
+                        </div>
+                        <!--End content-->
+
+                    </div>
+                    <!--End Wrap element-->
+                    <div style="text-align: center;margin:5px 0px;">
+                        <img src="/images/data/header-replace.png" alt="ads">
+                    </div>
+                    <!--Wrap element-->
+                    <div class="tz-box-two border-top2">
+                        <div class="row">
+
+                            <!--Content left-->
+                            <div class="col-md-6 border-right padding-style">
+
+                                <!--title-->
+                                <div class="tz-title-filter">
+                                    <h3 class="tz-title">
+                                        <span>Ads</span>
+                                    </h3>
+                                </div>
+                                <!--End title-->
+
+                                <!--Item vertical-->
+                                <div class="item-thumbnail-wrap item-vertical">
+                                    <div class="tz-thumbnail">
+                                            <img src="images/data/image-demo/370x593.png" alt="The 20 free things in Sydney with my girlfriend">
+                                    </div>
+                                </div>
+                                <!--End Item vertical-->
+
+                            </div>
+                            <!--End content left-->
+
+                            <!--Content right-->
+                            <div class="col-md-6 padding-style">
+                                <!--Start one cat-->
+                                <a class="red cat_name" href="page-blog.html">ফিচার</a>
+                                <div class="one-cat">
+                                <% Object.keys(feature).forEach(function(prop) { %>
+                                    <!--Item small two-->
+                                    <div class="item-small style-two">
+                                        <div class="tz-thumbnail">
+                                            <a href="/news/details/<%= feature[prop].slug %>">
+                                                <img src="<%= feature[prop].image %>" alt="<%= feature[prop].title %>" style="height:114px; width: 170px;">
+                                            </a>
+                                        </div>
+                                        <div class="tz-infomation">
+                                            <h3 class="tz-post-title"><a href="/news/details/<%= feature[prop].slug %>"><%= feature[prop].title %></a></h3>
+                                            <span class="meta"> <%= moment(feature[prop].createdAt).format('Do MMMM, YYYY') %> </span>
+                                            <p style="margin: 0px!important;"><%= feature[prop].metaDescription.substring(0, 170) %>...</p>
+                                        </div>
+                                    </div>
+                                    <!--End Item small two-->
+                                    <% }); %>
+                                </div>
+                                <!--End one cat-->
+                            </div>
+                            <!--End content left-->
+                        </div>
+                    </div>
+                    <!--End Wrap element-->
+
+                </div>
+                <!--End Content left-->
+
+                <!--Content right-->
+                <div class="col-md-4 col-sm-4 remove-padding tzsidebar">
+
+                    <!--Start Element-->
+                    <div class="tz-element">
+                        <div class="tz-counter">
+                            <a class="weatherwidget-io" href="https://forecast7.com/en/24d2190d95/bajitpur/" data-label_1="BAJITPUR" data-label_2="WEATHER" data-theme="original" >BAJITPUR WEATHER</a>
+                            <script>
+                            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+                            </script>
+                        </div>
+                    </div>
+                    <!--End Element-->
+
+                    <!--Start Element-->
+                    <div class="tz-element border-top2">
+                        <div class="tz-title-filter">
+                                <a href="#"><img src="images/data/image-demo/336x280.png" alt="ads3"></a>
+                        </div>
+                    </div>
+                    <!--End Element-->
+
+                    <!--Start Element-->
+                    <div class="tz-element border-top2">
+                        <div class="tz-title-filter full">
+                            <h3 class="tz-title">
+                                <span>শিক্ষা ও স্বাস্থ্য</span>
+                            </h3>
+                        </div>
+                        <div class="post-wrap-rating">
+                            <% Object.keys(education).forEach(function(prop) { %>
+                            <div class="item-rating item-small">
+                                <div class="tz-thumbnail">
+                                    <a href="/news/details/<%= education[prop].slug %>">
+                                        <img src="<%= education[prop].image %>" alt="<%= education[prop].title %>">
+                                    </a>
+                                </div>
+                                <div class="tz-infomation">
+                                    <h3 class="tz-post-title"><a href="<%= education[prop].slug %>"><%= education[prop].title %></a></h3>
+                                    
+                                </div>
+                            </div>
+                            <% }); %>
+                        </div>
+                    </div>
+                    <!--End Element-->
+                    <div class="tz-element">
+                        <div class="tz-counter">
+                            <a href="#"><img src="images/data/image-demo/336x280.png" alt="ads3"></a>
+                        </div>
+                    </div>
+                    <!--Start Element-->
+                    <div class="tz-element border-top2">
+                        <div class="tz-title-filter full">
+                            <h3 class="tz-title">
+                                <span>সাম্প্রতিক খবর </span>
+                            </h3>
+                        </div>
+                        <ul class="tz-lastests">
+                            <% Object.keys(slideBlock).forEach(function(prop) { %>
+                            <li>
+                                <div class="head">
+                                    <a class="<% if((prop%2)==0) { %> red <% } else{ %> blue <% } %> cat_name" href="/category/<%= slideBlock[prop].cat[0].slug %>"><%= slideBlock[prop].cat[0].title %></a>
+                                    <h3 class="tz-post-title"><a href="/news/details/<%= slideBlock[prop].slug %>"><%= slideBlock[prop].title %></a></h3>
+                                </div>
+                                <span class="meta"><%= moment(slideBlock[prop].createdAt).format('Do MMMM, YYYY') %> </span>
+                            </li>
+                            <% }) %>
+                        </ul>
+                    </div>
+                    <!--End Element-->
+                </div>
+                <!--End Content right-->
+
+            </div>
+            <!--End row-->
+
+            <!--Start Row-->
+            <div class="row border-bottom2">
+
+                
+                <!--Content right-->
+                <div class="col-md-12 col-sm-12 remove-padding">
+
+                    <div class="tz-large-box">
+
+                        <!--title-->
+                        <div class="tz-title-filter">
+                            <h3 class="tz-title">
+                                <span>যোগাযোগ ব্যবস্থা</span>
+                            </h3>
+                            <div class="tz-cat-filter">
+                                <button class="tz-button-prev prev-post">
+                                    <i class="fa fa-angle-left"></i>
+                                </button>
+                                <button class="tz-button-next next-post">
+                                    <i class="fa fa-angle-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!--End title-->
+
+                        <!--Slider post-->
+                        <div class="slider-post-wrap">
+                            <ul class="slider-post slider-post3">
+                                <% Object.keys(communication).forEach(function(prop) { %>
+                                <li>
+                                    <div class="item-thumbnail-wrap">
+                                        <div class="tz-thumbnail">
+                                            <a href="/news/details/<%= communication[prop].slug %>">
+                                                <img src="<%= communication[prop].image %>" alt="<%= communication[prop].title %>">
+                                            </a>
+                                            <div class="tz-infomation">
+                                                <h3 class="tz-post-title"><a href="/news/details/<%= communication[prop].slug %>"><%= communication[prop].title %></a></h3>
+                                                <span class="meta"><%= moment(communication[prop].createdAt).format('Do MMMM, YYYY') %> </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <% }) %>
+                            </ul>
+                        </div>
+                        <!--End slider post-->
+
+                    </div>
+                </div>
+                <!--End content right-->
+
+            </div>
+            <!--End Row-->
+
+            <!--Start Row-->
+            <div class="row">
+                <div class="col-md-8 col-sm-8 style-box1 tzcontent">
+
+                    <div class="tz-box-one border-top2">
+
+                        <!--Title-->
+                        <div class="tz-title-filter">
+                            <h3 class="tz-title">
+                                <span>দর্শনীয় স্থান</span>
+                            </h3>
+                        </div>
+                        <!--End title-->
+
+                        <!--Content-->
+                        <div class="row">
+
+                            <!--Box content two columns-->
+                           <div class="cat-box-two-columns">
+                            <% Object.keys(politics).forEach(function(prop) { %>
+                                <% if(prop==0 || prop==3) { %>
+                               <div class="col-md-6">
+
+                                   <!--Item thumbnail wrap-->
+                                   <div class="item-thumbnail-wrap">
+                                       <div class="tz-thumbnail">
+                                           <a href="/news/details/<%= politics[prop].slug %>">
+                                               <img src="<%= politics[prop].image %>" alt="<%= politics[prop].title %>" style="width: 370px; height: 243px;">
+                                           </a>
+                                           <div class="tz-infomation">
+                                               <h3 class="tz-post-title"><a href="/news/details/<%= politics[prop].slug %>"><%= politics[prop].title %></a></h3>
+                                               <span class="meta"> <%= moment(politics[prop].createdAt).format('Do MMMM, YYYY') %> </span>
+                                           </div>
+                                       </div>
+                                   </div>
+                                   <!--End Item thumbnail wrap-->
+                                   <% } else{ %>
+                                   <!--Item small-->
+                                   <div class="item-small">
+                                       <div class="tz-thumbnail">
+                                           <a href="/news/details/<%= politics[prop].slug %>">
+                                               <img src="<%= politics[prop].image %>" alt="<%= politics[prop].title %>" style="width:130px; height: 99px;" >
+                                           </a>
+                                       </div>
+                                       <div class="tz-infomation">
+                                           <h3 class="tz-post-title"><a href="/news/details/<%= politics[prop].slug %>"><%= politics[prop].title %></a></h3>
+                                           <span class="meta"> <%= moment(politics[prop].createdAt).format('Do MMMM, YYYY') %></span>
+                                       </div>
+                                   </div>
+                                   <% } %>
+                                   <!--End item small-->
+
+                                   <% if(prop==2 || prop==(politics.length-1)) { %></div> <% } %>
+                               <% }); %>
+                               
+                           </div>
+                            <!--End box content two columns-->
+
+                        </div>
+                        <!--End content-->
+
+                    </div>
+                </div>
+                
+                <!--Left-->
+                <div class="col-md-4 col-sm-4 remove-padding tzsidebar">
+                    <div class="tz-element margin-top12">
+                        <div class="tz-photos">
+                            <div class="tz-title-filter">
+                                <h3 class="tz-title">
+                                    <span>স্মরনীয় ও বরনীয় যারা</span>
+                                </h3>
+                            </div>
+                            <ul class="tz-post-photos">
+                                <% Object.keys(people).forEach(function(prop) { %>
+                                <li>
+                                    <a href="/news/details/<%= people[prop].slug %>">
+                                        <img src="<%= people[prop].image %>" alt="photo one" style="width: 110px;height:110px;">
+                                    </a>
+                                </li>
+                                <% }); %>
+                                
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="tz-element border-top">
+                        <div class="abs">
+                            <a href="#"><img src="images/data/image-demo/336x280.png" alt="ads3"></a>
+                        </div>
+                    </div>
+                </div>
+                <!--End Left-->
+                
+            </div>
+            <!--End Row-->
+
+        </div>
+
+<%- include('./partials/footer.ejs') %>
+    

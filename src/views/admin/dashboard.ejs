@@ -1,0 +1,118 @@
+<%- include('./partials/header.ejs') %>
+<%- include('./partials/menu.ejs') %>
+  
+  <div class="content-wrapper">
+    
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Dashboard</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active"><%= breadcrumb %></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    
+    <section class="content">
+      <div class="container-fluid">
+        
+        <div class="row">
+          <div class="col-lg-4 col-6">
+            
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3><%= totalBlog.length %> </h3>
+
+                <p>Blog</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-eye"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          
+          <div class="col-lg-4 col-6">
+            
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>53</h3>
+
+                <p>Today Visitor</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-pause"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          
+          <div class="col-lg-4 col-6">
+            
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>65</h3>
+
+                <p>Total Visitors</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-users"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          
+        </div>
+        
+        
+        <div class="row">
+          
+          <section class="col-lg-6 connectedSortable">
+            
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fas fa-chart-pie mr-1"></i>
+                  Monthly Visitor
+                </h3>
+              </div>
+              <div class="card-body">
+                Tuhin
+              </div>
+            </div>
+            
+          </section>
+          
+          
+          <section class="col-lg-6 connectedSortable">
+            
+            <div class="card bg-gradient-primary">
+              <div class="card-header border-0">
+                <h3 class="card-title">
+                  <i class="fas fa-map-marker-alt mr-1"></i>
+                  Visitors
+                </h3>                              
+              </div>
+              <div class="card-body">
+                Tuhin 
+              </div>
+            </div>            
+          </section>
+          
+        </div>
+        
+      </div>
+    </section>
+    
+  </div>
+  
+<%- include('./partials/footer.ejs') %>
+ 
