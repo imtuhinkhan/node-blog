@@ -13,7 +13,7 @@
         <!--Breadcrumbs-->
         <ul class="tz-breadcrumbs pull-left">
             <li>
-                <a href="/">প্রচ্ছদ ক্যাটাগরি </a><i class="fa fa-angle-right"></i>
+                <a href="/">প্রচ্ছদ </a><i class="fa fa-angle-right"></i>
             </li>
             <li>
                 <a href="/category/<%= singleBlock.cat[0].slug %>"><%= singleBlock.cat[0].title %></a><i class="fa fa-angle-right"></i>
@@ -38,24 +38,25 @@
                 
                 <div class="col-md-9 border-right">
                     <article class="single-post">
-                        <div class="tz-single-thumbnail">
-                            <img src="/<%= singleBlock.image %>" alt="<%= singleBlock.title %>" style="width:869px;height: 540px;margin: auto;">
-                        </div>
-                        <h1 class="single-title"><%= singleBlock.title %></h1>
-                        <span class="post-meta"> Published: <%= moment(singleBlock.createdAt).format('Do MMMM, YYYY') %> | <i class="fa fa-eye"></i> <%= singleBlock.viewCount %></span>
+                        <%- ads.in_article %>  
+                        
+                        <h1 class="single-title" style="text-align: center;font-size: 26px;"><%= singleBlock.title %></h1>
+                        <p class="post-meta"  style="text-align: center;font-size:16px;"> Published: <%= moment(singleBlock.createdAt).format('Do MMMM, YYYY') %> | <i class="fa fa-eye"></i> <%= singleBlock.viewCount %></p>
                        
                         <div class="post-content">
+                            <div style="text-align: center;">
+                                <img src="/<%= singleBlock.image %>" alt="<%= singleBlock.title %>" style="width:50%;margin: auto;">
+                            </div>
                             <%- singleBlock.description %>
                         </div>
                         <div style="text-align: center;margin:5px 0px;">
-                            <img src="/images/data/header-replace.png" alt="ads">
+                            <%- ads.single_bottom %>  
                         </div>
                     </article>
                 </div>
                 <div class="col-md-3 blog-sidebar">
                     <div class="widget widget_categories">
-                        <a href="#"><img src="/images/data/image-demo/336x280.png" alt="ads3"></a>
-                        
+                        <%- ads.single_sidebar %>     
                     </div>
                     <div class="widget">
                         <div class="tz-title-filter">
@@ -83,8 +84,7 @@
                         </div>
                     </div>
                     <div class="widget widget_categories">
-                        <a href="#"><img src="/images/data/image-demo/336x280.png" alt="ads3"></a>
-                        
+                        <%- ads.single_sidebar %>  
                     </div>
                 </div>
             </div><!--End row-->

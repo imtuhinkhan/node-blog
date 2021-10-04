@@ -41,6 +41,8 @@
                     <th>News Title</th>
                     <th>Category</th>
                     <th>Feature Image</th>
+                    
+                    <th>Total Views</th>
                     <th>Action</th>
                   </tr>
                   </thead>
@@ -56,6 +58,8 @@
                     <% } } %>
                    </td>
                    <td><img src="/<%= news.image %>" width="100"></td>
+                   
+                   <td><%= news.viewCount %></td>
                     <td>
                       <a href="/admin/blog/edit/<%= news._id %>" class="btn btn-xs btn-warning">Edit</a>
                       <a href="/admin/blog/delete/<%= news._id %>" class="btn btn-xs btn-danger">Delete</a>

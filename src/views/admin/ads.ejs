@@ -1,0 +1,118 @@
+<%- include('./partials/header.ejs') %>
+<%- include('./partials/menu.ejs') %>
+  
+  <div class="content-wrapper">
+    
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Add USer</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Add google ad</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Google Ads</h3>
+              </div>
+              <form action="/admin/ads/save" method="POST">
+                <div class="card-body">   
+                    <%if(ads) { %> <input type="hidden" name="ad_id" value="<%= ads._id %>"> <% } %>         
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Header Ads</label>
+                    <textarea type="text" name="header_add" class="form-control" rows="5" ><%if(ads) { %><%= ads.header_add %><% } %></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Home  Sidebar 1</label>
+                    <textarea type="text" name="home_sidebar_1" class="form-control" rows="5"><%if(ads) { %><%= ads.home_sidebar_1 %><% } %></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Home  Sidebar 2</label>
+                    <textarea type="text" name="home_sidebar_2" class="form-control" rows="5"><%if(ads) { %><%= ads.home_sidebar_2 %><% } %></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Home  Sidebar 3</label>
+                    <textarea type="text" name="home_sidebar_3" class="form-control" rows="5"><%if(ads) { %><%= ads.home_sidebar_3 %><% } %></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Home  Right long banner</label>
+                    <textarea type="text" name="home_long" class="form-control" rows="5"><%if(ads) { %><%= ads.home_long %><% } %></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Home  Horizontal</label>
+                    <textarea type="text" name="home_horizontal" class="form-control" rows="5"><%if(ads) { %><%= ads.home_horizontal %><% } %></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Category 1</label>
+                    <textarea type="text" name="category_1" class="form-control" rows="5"><%if(ads) { %><%= ads.category_1 %><% } %></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Category 2</label>
+                    <textarea type="text" name="category_2" class="form-control" rows="5"><%if(ads) { %><%= ads.category_2 %><% } %></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Category 3</label>
+                    <textarea type="text" name="category_3" class="form-control" rows="5"><%if(ads) { %><%= ads.category_3 %><% } %></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Single sidebar</label>
+                    <textarea type="text" name="single_sidebar" class="form-control" rows="5"><%if(ads) { %><%= ads.single_sidebar %><% } %></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Single Bottom</label>
+                    <textarea type="text" name="single_bottom" class="form-control" rows="5"><%if(ads) { %><%= ads.single_bottom %><% } %></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">In Article</label>
+                    <textarea type="text" name="in_article" class="form-control" rows="5"><%if(ads) { %><%= ads.in_article %><% } %></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Search</label>
+                    <textarea type="text" name="search" class="form-control" rows="5"><%if(ads) { %><%= ads.search %><% } %></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Footer</label>
+                    <textarea type="text" name="footer" class="form-control" rows="5"><%if(ads) { %><%= ads.footer %><% } %></textarea>
+                  </div>
+
+                  
+                 
+                </div>                
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </form>  
+              </div>
+            </div>
+          </div>
+        </section>    
+  </div>  
+  
+<%- include('./partials/footer.ejs') %>
+ 

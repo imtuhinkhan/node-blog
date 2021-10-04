@@ -4,6 +4,7 @@ const adminController = require('../controllers/adminController');
 const loginController = require('../controllers/loginController');
 const categoryController = require('../controllers/categoryController');
 const blogController = require('../controllers/blogController');
+const googleAdsController = require('../controllers/googleAdsController');
 const multer = require('multer')
 const auth = require('../middleware/auth')
 
@@ -62,7 +63,10 @@ router.get('/blog/edit/:id',auth,blogController.editBlog)
 
 
 router.get('/media',auth,adminController.allMedia)
-router.get('/ads',auth,adminController.googleAds)
+
+//ads
+router.get('/ads',auth,googleAdsController.googleAds)
+router.post('/ads/save',auth,googleAdsController.googleAdsSave)
 
 //user name
 router.get('/user',auth,adminController.allUsers)

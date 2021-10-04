@@ -22,20 +22,26 @@ exports.Homepage = async(req,res,next) => {
         path:'cat',
     }).exec()
 
-    const people = await Blog.find({ "newsCategory": { "$in": [ "5f6514ee059d0b4178209626" ] } }).sort({'createdAt': -1}).limit(9).populate({
+    const people = await Blog.find({ "newsCategory": { "$in": [ "5f7a0b1509c0a76f8c0834d7" ] } }).sort({'createdAt': -1}).limit(9).populate({
+        path:'cat',
+    }).exec()
+
+    const place = await Blog.find({ "newsCategory": { "$in": [ "5f651565059d0b417820962a" ] } }).sort({'createdAt': -1}).limit(9).populate({
         path:'cat',
     }).exec()
     res.render('front/index', {
         title:'Daily Bajitpur',
         category:req.category,
         moment:req.moment,
+        ads:req.ads,
         onNewspaper,
         slideBlock,
         politics,
         feature,
         communication,
         education,
-        people
+        people,
+        place
     });
 };
 
@@ -54,18 +60,21 @@ exports.singleBlog = async(req,res,next) => {
         const singleBlock = await Blog.findOne({slug}).populate('cat').exec()
         const slideBlock = await Blog.find().sort({'createdAt': -1}).limit(5).populate('cat').exec()
         const fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+        const Url = req.protocol + '://' + req.get('host');
         if(!singleBlock){
-            res.status(404).send('No news Found')
+            res.redirect('/')
         }
         singleBlock.viewCount =singleBlock.viewCount+1
         singleBlock.save()
         res.render('front/single', {
-            title:' Daily Bajitpur',
+            title:'ডেইলি বাজিতপুর । '+singleBlock.title,
             moment:req.moment,
             category:req.category,
             singleBlock,
             slideBlock,
-            fullUrl
+            ads:req.ads,
+            fullUrl,
+            Url
 
         });
     }catch(e){
@@ -75,7 +84,7 @@ exports.singleBlog = async(req,res,next) => {
 
 exports.categoryWiseBlog = async(req,res,next) => {
     const slug = req.params.id;
-    var perPage = 16
+    var perPage = 14
     var page = req.query.page || 1
     // 
     try{
@@ -92,8 +101,8 @@ exports.categoryWiseBlog = async(req,res,next) => {
             categoryWise,
             catDetails:category,
             current: page,
-            pages: Math.ceil(total.length / perPage)
-     
+            pages: Math.ceil(total.length / perPage),
+            ads:req.ads  
         });
     }catch(e){
         console.log(e)
@@ -103,15 +112,15 @@ exports.categoryWiseBlog = async(req,res,next) => {
 
 exports.search = async(req,res,next) => {
     const slug = req.query.key;
-    console.log(slug)
     try{
         const categoryWise = await Blog.find({"title": { $regex: '.*' + slug + '.*' }})
        console.log(categoryWise)
-        res.render('front/Search', {
+        res.render('front/search', {
             title:' Daily Bajitpur',
             category:req.category,
             moment:req.moment,
-            categoryWise
+            categoryWise,
+            ads:req.ads
      
         });
     }catch(e){

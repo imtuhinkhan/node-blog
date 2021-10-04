@@ -54,7 +54,7 @@ exports.newsSave = async(req,res,next) =>{
         if(imagePath)
         {
             blog.image= imagePath.path
-        }
+        }else{ blog.image = 'src/public/images/blog.png'}
         try{
             await blog.save();
             return res.redirect('/admin/blogs')

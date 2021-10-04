@@ -1,4 +1,5 @@
 const Category = require('../models/Category')
+const Ads = require('../models/Ads')
 const moment = require('moment')
 
 const cat = async (req,res,next)=>{
@@ -7,7 +8,9 @@ const cat = async (req,res,next)=>{
             path:'child',
             match:{ parent: { $eq: null }}
         }).exec()
+        const ads = await Ads.findOne()
         req.category = category
+        req.ads = ads
         req.moment = moment
         next()
 

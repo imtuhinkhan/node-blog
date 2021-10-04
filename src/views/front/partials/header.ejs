@@ -22,6 +22,20 @@
     <script src="js/html5shiv.min.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->
+    
+    <meta property="og:url"                content="<%if(locals.singleBlock){ %><%= fullUrl %><% } %>" />
+    <meta property="og:type"               content="article" />
+    <meta property="og:title"              content="<%if(locals.singleBlock){ %> <%= singleBlock.title %><% } %>" />
+    <meta property="og:description"        content="<%if(locals.singleBlock){ %> <%= singleBlock.metaDescription %><% } %>" />
+    <meta property="og:image"              content="<%if(locals.singleBlock){ %> <%= Url %>/<%= singleBlock.image %><% } %> />
+    
+    <script data-ad-client="ca-pub-8557244206985950" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <style>
+        p{
+            font-size: 16px;
+            text-align: justify;
+        }
+    </style>
 </head>
 <body>
 
@@ -59,9 +73,7 @@
                     </a>
                 </div>
                 <div class="tz-header-ads pull-right">
-                    <a href="#">
-                        <img src="/images/data/header-replace.png" alt="ads">
-                    </a>
+                   
                 </div>
 
                 <!--navigation mobi-->

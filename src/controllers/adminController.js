@@ -20,11 +20,7 @@ exports.allMedia = (req,res,next) => {
     });
 };
 
-exports.googleAds = (req,res,next) => {
-    res.render('admin/blank', {
-        title:'Daily Bajitpur'
-    });
-};
+
 
 exports.allUsers = async(req,res,next) => {
     const users = await User.find()
